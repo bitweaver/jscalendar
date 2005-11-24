@@ -1,0 +1,71 @@
+/* The main calendar widget. DIV containing a table. */
+div.jscalendar					{position:relative; width:240px;}
+.jscalendar,
+.jscalendar table				{border:2px solid #000; font-size:11px; color:#000; cursor:default; background:#F1F8FC; font-family:tahoma,verdana,sans-serif;}
+.jscalendar td					{padding:3px;}
+/* Header part -- contains navigation buttons and day names. */
+/* "<<", "<", ">", ">>" buttons have this class */
+.jscalendar .button				{text-align:center;}
+.jscalendar .nav				{background:#369 url(menuarrow2.gif) no-repeat 100% 100%;}
+/* This holds the current "month, year" */
+.jscalendar thead .title		{font-weight:bold; text-align:center; background:#000; color:#fff;}
+/* Row <TR> containing navigation buttons */
+.jscalendar thead tr			{background:#369; color:#fff;}
+/* Row <TR> containing the day names */
+.jscalendar thead .daynames		{background:#C7E1F3;}
+/* Cells <TD> containing the day names */
+.jscalendar thead .name			{border-bottom:1px solid #000; text-align:center; color:#000;}
+/* How a weekend day name shows in header */
+.jscalendar thead .weekend		{color:#a66;}
+/* How do the buttons in header appear when hover */
+.jscalendar thead .hilite		{background-color:#34ABFA; color:#000;}
+/* Active (pressed) buttons in header */
+.jscalendar thead .active		{background-color:#006AA9;}
+/* The body part -- contains all the days in month. */
+/* Cells <TD> containing month days dates */
+.jscalendar tbody .day			{width:2em; color:#456; text-align:right;}
+.jscalendar tbody .day.othermonth			{font-size:80%; color:#bbb;}
+.jscalendar tbody .day.othermonth.oweekend	{color:#fbb;}
+.jscalendar table .wn			{border-right:1px solid #000; background:#C7E1F3;}
+.jscalendar tbody .rowhilite td		{background:#def;}
+.jscalendar tbody .rowhilite td.wn	{background:#F1F8FC;}
+.jscalendar tbody td			{border:1px dotted #999;}
+/* Hovered cells <TD> */
+.jscalendar tbody td.hilite		{background:#900 !important; color:#fff !important;}
+/* Active (pressed) cells <TD> */
+.jscalendar tbody td.active		{background:#c60;}
+/* Cell showing today date */
+.jscalendar tbody td.selected	{font-weight:bold; background:#fff; color:#000; border:1px solid #000 !important;}
+/* Cells showing weekend days */
+.jscalendar tbody td.weekend	{color:#a66;}
+/* Cell showing selected date */
+.jscalendar tbody td.today		{font-weight:bold; color:#D50000;}
+.jscalendar tbody .disabled		{color:#999; }
+/* Empty cells (the best is to hide them) */
+.jscalendar tbody .emptycell	{visibility:hidden;}
+/* Empty row (some months need less than 6 rows) */
+.jscalendar tbody .emptyrow		{display:none;}
+/* The footer part -- status bar and "Close" button */
+/* The <TR> in footer (only one right now) */
+.jscalendar tfoot .footrow		{text-align:center; background:#206A9B; color:#fff;}
+/* Tooltip (status bar) cell <TD> */
+.jscalendar tfoot .ttip			{background:#000; color:#fff;}
+/* Hover style for buttons in footer */
+.jscalendar tfoot .hilite		{background:#B8DAF0; color:#000;}
+/* Active (pressed) style for buttons in footer */
+.jscalendar tfoot .active		{background:#006AA9;}
+/* Combo boxes (menus that display months/years for direct selection) */
+.jscalendar .combo				{position:absolute; display:none; top:0px; left:0px; width:4em; cursor:default; border:1px solid #655; background:#def; color:#000; font-size:90%; z-index:100;}
+.jscalendar .combo .label,
+.jscalendar .combo .label-IEfix	{text-align:center;}
+.jscalendar .combo .label-IEfix	{width:4em;}
+.jscalendar .combo .hilite		{background:#34ABFA; font-weight:bold;}
+.jscalendar .combo .active		{border-top:1px solid #46a; border-bottom:1px solid #46a; background:#F1F8FC; font-weight:bold;}
+.jscalendar td.time				{border-top:1px solid #000; text-align:center; background-color:#E3F0F9;}
+.jscalendar td.time .hour,
+.jscalendar td.time .minute,
+.jscalendar td.time .ampm		{ border:1px solid #889; font-weight:bold; background-color:#F1F8FC;}
+.jscalendar td.time .ampm		{text-align:center;}
+.jscalendar td.time .colon		{ font-weight:bold;}
+.jscalendar td.time span.hilite	{background-color:#267DB7; color:#fff;}
+.jscalendar td.time span.active	{border-color:red; background-color:#000; color:#A5FF00;
