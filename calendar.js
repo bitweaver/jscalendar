@@ -12,7 +12,7 @@
  * Read the entire license text here: http://www.gnu.org/licenses/lgpl.html
  */
 
-// $Id: calendar.js,v 1.2 2005/11/27 12:28:42 lsces Exp $
+// $Id: calendar.js,v 1.3 2005/12/05 23:55:51 squareing Exp $
 
 /** The Calendar object constructor. */
 Calendar = function (firstDayOfWeek, dateStr, onSelected, onClose) {
@@ -592,7 +592,7 @@ Calendar.cellClick = function(el, ev) {
 		cal.date.setDateOnly(el.caldate);
 		date = cal.date;
 		var other_month = !(cal.dateClicked = !el.otherMonth);
-		if (!other_month && !cal.currentDateEl && cal.multiple)
+		if (!other_month && !cal.currentDateEl)
 			cal._toggleMultipleDate(new Date(date));
 		else
 			newdate = !el.disabled;
@@ -739,7 +739,8 @@ Calendar.prototype.create = function (_par) {
 
 	var div = Calendar.createElement("div");
 	this.element = div;
-	div.className = "calendar";
+	// renamed class from calendar to jscalendar - xing
+	div.className = "jscalendar";
 	if (this.isPopup) {
 		div.style.position = "absolute";
 		div.style.display = "none";
@@ -1696,22 +1697,12 @@ Date.prototype.getDayOfYear = function() {
 
 /** Returns the number of the week in year, as defined in ISO 8601. */
 Date.prototype.getWeekNumber = function() {
-	var firstDayOfWeek;
-	if(typeof this.firstDayOfWeek == "undefined") { firstDayOfWeek = 0; }
-	
 	var d = new Date(this.getFullYear(), this.getMonth(), this.getDate(), 0, 0, 0);
-	d.setDate(d.getDate() + (firstDayOfWeek + 3 - d.getDay()) ); // Thurs in this week (or weds if FDoW is Sunday... works for any FDoW)
+	var DoW = d.getDay();
+	d.setDate(d.getDate() - (DoW + 6) % 7 + 3); // Nearest Thu
 	var ms = d.valueOf(); // GMT
 	d.setMonth(0);
-	d.setDate(1); // Jan 1st
-	
-	//walk *forward* until we know we're in the first week.
-	//Equivalent to "Until we find the first Thursday" for FDoW == Monday, 
-	//or "Until we find the first Wednesday" for FDoW == Sunday
-		while(d.getDay() != (firstDayOfWeek + 3)) {
-	 		d.setDate(d.getDate() + 1);
-	 	}
-
+	d.setDate(4); // Thu in Week 1
 	return Math.round((ms - d.valueOf()) / (7 * 864e5)) + 1;
 };
 
