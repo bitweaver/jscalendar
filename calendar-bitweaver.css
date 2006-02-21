@@ -68,4 +68,4 @@ div.jscalendar					{position:relative; width:240px;}
 .jscalendar td.time .ampm		{text-align:center;}
 .jscalendar td.time .colon		{ font-weight:bold;}
 .jscalendar td.time span.hilite	{background-color:#267DB7; color:#fff;}
-.jscalendar td.time span.active	{border-color:red; background-color:#000; color:#A5FF00;
+.jscalendar td.time span.active	{border-color:red; background-color:#000; color:#A5FF00;}
