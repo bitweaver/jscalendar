@@ -1,6 +1,6 @@
 /* The main calendar widget.  DIV containing a table. */
 
-.calendar {
+.jscalendar {
   position: relative;
   display: none;
   border: 1px solid;
@@ -10,9 +10,10 @@
   background: Window;
   color: WindowText;
   font-family: tahoma,verdana,sans-serif;
+  width: 150px;
 }
 
-.calendar table {
+.jscalendar table {
   border: 1px solid;
   border-color: #fff #000 #000 #fff;
   font-size: 11px;
@@ -24,7 +25,7 @@
 
 /* Header part -- contains navigation buttons and day names. */
 
-.calendar .button { /* "<<", "<", ">", ">>" buttons have this class */
+.jscalendar .button { /* "<<", "<", ">", ">>" buttons have this class */
   text-align: center;
   padding: 1px;
   border: 1px solid;
@@ -32,11 +33,11 @@
   background: ButtonFace;
 }
 
-.calendar .nav {
+.jscalendar .nav {
   background: ButtonFace url(menuarrow.gif) no-repeat 100% 100%;
 }
 
-.calendar thead .title { /* This holds the current "month, year" */
+.jscalendar thead .title { /* This holds the current "month, year" */
   font-weight: bold;
   padding: 1px;
   border: 1px solid #000;
@@ -45,13 +46,13 @@
   text-align: center;
 }
 
-.calendar thead .headrow { /* Row <TR> containing navigation buttons */
+.jscalendar thead .headrow { /* Row <TR> containing navigation buttons */
 }
 
-.calendar thead .daynames { /* Row <TR> containing the day names */
+.jscalendar thead .daynames { /* Row <TR> containing the day names */
 }
 
-.calendar thead .name { /* Cells <TD> containing the day names */
+.jscalendar thead .name { /* Cells <TD> containing the day names */
   border-bottom: 1px solid ButtonShadow;
   padding: 2px;
   text-align: center;
@@ -59,17 +60,17 @@
   color: ButtonText;
 }
 
-.calendar thead .weekend { /* How a weekend day name shows in header */
+.jscalendar thead .weekend { /* How a weekend day name shows in header */
   color: #f00;
 }
 
-.calendar thead .hilite { /* How do the buttons in header appear when hover */
+.jscalendar thead .hilite { /* How do the buttons in header appear when hover */
   border: 2px solid;
   padding: 0px;
   border-color: ButtonHighlight ButtonShadow ButtonShadow ButtonHighlight;
 }
 
-.calendar thead .active { /* Active (pressed) buttons in header */
+.jscalendar thead .active { /* Active (pressed) buttons in header */
   border-width: 1px;
   padding: 2px 0px 0px 2px;
   border-color: ButtonShadow ButtonHighlight ButtonHighlight ButtonShadow;
@@ -77,32 +78,32 @@
 
 /* The body part -- contains all the days in month. */
 
-.calendar tbody .day { /* Cells <TD> containing month days dates */
+.jscalendar tbody .day { /* Cells <TD> containing month days dates */
   width: 2em;
   text-align: right;
   padding: 2px 4px 2px 2px;
 }
-.calendar tbody .day.othermonth {
+.jscalendar tbody .day.othermonth {
   font-size: 80%;
   color: #aaa;
 }
-.calendar tbody .day.othermonth.oweekend {
+.jscalendar tbody .day.othermonth.oweekend {
   color: #faa;
 }
 
-.calendar table .wn {
+.jscalendar table .wn {
   padding: 2px 3px 2px 2px;
   border-right: 1px solid ButtonShadow;
   background: ButtonFace;
   color: ButtonText;
 }
 
-.calendar tbody .rowhilite td {
+.jscalendar tbody .rowhilite td {
   background: Highlight;
   color: HighlightText;
 }
 
-.calendar tbody td.hilite { /* Hovered cells <TD> */
+.jscalendar tbody td.hilite { /* Hovered cells <TD> */
   padding: 1px 3px 1px 1px;
   border-top: 1px solid #fff;
   border-right: 1px solid #000;
@@ -110,13 +111,13 @@
   border-left: 1px solid #fff;
 }
 
-.calendar tbody td.active { /* Active (pressed) cells <TD> */
+.jscalendar tbody td.active { /* Active (pressed) cells <TD> */
   padding: 2px 2px 0px 2px;
   border: 1px solid;
   border-color: ButtonShadow ButtonHighlight ButtonHighlight ButtonShadow;
 }
 
-.calendar tbody td.selected { /* Cell showing selected date */
+.jscalendar tbody td.selected { /* Cell showing selected date */
   font-weight: bold;
   border: 1px solid;
   border-color: ButtonShadow ButtonHighlight ButtonHighlight ButtonShadow;
@@ -125,31 +126,31 @@
   color: ButtonText;
 }
 
-.calendar tbody td.weekend { /* Cells showing weekend days */
+.jscalendar tbody td.weekend { /* Cells showing weekend days */
   color: #f00;
 }
 
-.calendar tbody td.today { /* Cell showing today date */
+.jscalendar tbody td.today { /* Cell showing today date */
   font-weight: bold;
   color: #00f;
 }
 
-.calendar tbody td.disabled { color: GrayText; }
+.jscalendar tbody td.disabled { color: GrayText; }
 
-.calendar tbody .emptycell { /* Empty cells (the best is to hide them) */
+.jscalendar tbody .emptycell { /* Empty cells (the best is to hide them) */
   visibility: hidden;
 }
 
-.calendar tbody .emptyrow { /* Empty row (some months need less than 6 rows) */
+.jscalendar tbody .emptyrow { /* Empty row (some months need less than 6 rows) */
   display: none;
 }
 
 /* The footer part -- status bar and "Close" button */
 
-.calendar tfoot .footrow { /* The <TR> in footer (only one right now) */
+.jscalendar tfoot .footrow { /* The <TR> in footer (only one right now) */
 }
 
-.calendar tfoot .ttip { /* Tooltip (status bar) cell <TD> */
+.jscalendar tfoot .ttip { /* Tooltip (status bar) cell <TD> */
   background: ButtonFace;
   padding: 1px;
   border: 1px solid;
@@ -158,7 +159,7 @@
   text-align: center;
 }
 
-.calendar tfoot .hilite { /* Hover style for buttons in footer */
+.jscalendar tfoot .hilite { /* Hover style for buttons in footer */
   border-top: 1px solid #fff;
   border-right: 1px solid #000;
   border-bottom: 1px solid #000;
@@ -167,7 +168,7 @@
   background: #e4e0d8;
 }
 
-.calendar tfoot .active { /* Active (pressed) style for buttons in footer */
+.jscalendar tfoot .active { /* Active (pressed) style for buttons in footer */
   padding: 2px 0px 0px 2px;
   border-top: 1px solid #000;
   border-right: 1px solid #fff;
@@ -177,7 +178,7 @@
 
 /* Combo boxes (menus that display months/years for direct selection) */
 
-.calendar .combo {
+.jscalendar .combo {
   position: absolute;
   display: none;
   width: 4em;
@@ -193,58 +194,58 @@
   z-index: 100;
 }
 
-.calendar .combo .label,
-.calendar .combo .label-IEfix {
+.jscalendar .combo .label,
+.jscalendar .combo .label-IEfix {
   text-align: center;
   padding: 1px;
 }
 
-.calendar .combo .label-IEfix {
+.jscalendar .combo .label-IEfix {
   width: 4em;
 }
 
-.calendar .combo .active {
+.jscalendar .combo .active {
   padding: 0px;
   border: 1px solid #000;
 }
 
-.calendar .combo .hilite {
+.jscalendar .combo .hilite {
   background: Highlight;
   color: HighlightText;
 }
 
-.calendar td.time {
+.jscalendar td.time {
   border-top: 1px solid ButtonShadow;
   padding: 1px 0px;
   text-align: center;
   background-color: ButtonFace;
 }
 
-.calendar td.time .hour,
-.calendar td.time .minute,
-.calendar td.time .ampm {
+.jscalendar td.time .hour,
+.jscalendar td.time .minute,
+.jscalendar td.time .ampm {
   padding: 0px 3px 0px 4px;
   border: 1px solid #889;
   font-weight: bold;
   background-color: Menu;
 }
 
-.calendar td.time .ampm {
+.jscalendar td.time .ampm {
   text-align: center;
 }
 
-.calendar td.time .colon {
+.jscalendar td.time .colon {
   padding: 0px 2px 0px 3px;
   font-weight: bold;
 }
 
-.calendar td.time span.hilite {
+.jscalendar td.time span.hilite {
   border-color: #000;
   background-color: Highlight;
   color: HighlightText;
 }
 
-.calendar td.time span.active {
+.jscalendar td.time span.active {
   border-color: #f00;
   background-color: #000;
   color: #0f0;
