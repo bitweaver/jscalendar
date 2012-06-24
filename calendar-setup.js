@@ -47,6 +47,7 @@
  *   onClose       | function that gets called when the calendar is closed.  [default]
  *   onUpdate      | function that gets called after the date is updated in the input field.  Receives a reference to the calendar.
  *   date          | the date that the calendar will be initially displayed to
+ *                 | or a function to retrive it
  *   showsTime     | default: false; if true the calendar will include a time selector
  *   timeFormat    | the time format; can be "12" or "24", default is "12"
  *   electric      | if true (default) then given fields/date areas are updated for each move; otherwise they're updated only on close
@@ -81,7 +82,7 @@ Calendar.setup = function (params) {
 	param_default("onSelect",       null);
 	param_default("onClose",        null);
 	param_default("onUpdate",       null);
-	param_default("date",           null);
+	param_default("date",           null); // can be a function
 	param_default("showsTime",      false);
 	param_default("timeFormat",     "24");
 	param_default("electric",       true);
@@ -129,7 +130,9 @@ Calendar.setup = function (params) {
 			alert("Calendar.setup:\n  Flat specified but can't find parent.");
 			return false;
 		}
-		var cal = new Calendar(params.firstDay, params.date, params.onSelect || onSelect);
+		var date = (typeof params.date == "function") ?
+			params.date() : params.date;
+		var cal = new Calendar(params.firstDay, date, params.onSelect || onSelect);
 		cal.showsOtherMonths = params.showOthers;
 		cal.showsTime = params.showsTime;
 		cal.time24 = (params.timeFormat == "24");
@@ -155,11 +158,18 @@ Calendar.setup = function (params) {
 		var dateFmt = params.inputField ? params.ifFormat : params.daFormat;
 		var mustCreate = false;
 		var cal = window.calendar;
-		if (dateEl)
-			params.date = Date.parseDate(dateEl.value || dateEl.innerHTML, dateFmt);
+		var date = null;
+		if ( params.date ) {
+			date = (typeof params.date == "function") ?
+				params.date() : params.date;
+		}
+		else {
+			if (dateEl)
+				date = Date.parseDate(dateEl.value || dateEl.innerHTML, dateFmt);
+		}
 		if (!(cal && params.cache)) {
 			window.calendar = cal = new Calendar(params.firstDay,
-							     params.date,
+							     date,
 							     params.onSelect || onSelect,
 							     params.onClose || function(cal) { cal.hide(); });
 			cal.showsTime = params.showsTime;
@@ -167,8 +177,7 @@ Calendar.setup = function (params) {
 			cal.weekNumbers = params.weekNumbers;
 			mustCreate = true;
 		} else {
-			if (params.date)
-				cal.setDate(params.date);
+			if (date) cal.setDate(date);
 			cal.hide();
 		}
 		if (params.multiple) {
